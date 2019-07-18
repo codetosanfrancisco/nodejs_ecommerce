@@ -1,0 +1,27 @@
+
+    <% include ../includes/head.ejs %>
+  </head>
+
+  <body>
+    <% include ../includes/navigation.ejs %>
+    <h1>Welcome to shop.ejs</h1>
+    <div class="container">
+      <% if(products.length > 0){%> <% products.forEach(function(product){ %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= product.title%></h6>
+          <p class="card-text">
+            <%= product.decsription%>
+          </p>
+          <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn btn-primary">Edit</a>
+          <form action="/admin/delete-product/<%= product._id%>" method="POST">
+            <button class="btn btn-primary">Delete</button>
+          </form>
+        </div>
+      </div>
+      <% }); %> <% }else{ %>
+      <h3>No products found!</h3>
+      <% } %>
+    </div>
+    <% include ../includes/end.ejs %>

@@ -1,0 +1,26 @@
+
+    <% include ../includes/head.ejs %>
+  </head>
+
+  <body>
+    <% include ../includes/navigation.ejs %>
+    <h1><%= pageTitle %></h1>
+    <div class="container"></div>
+    <% if(orders.length > 0){ %>
+      <% orders.forEach(order => {%>
+        <div style="border:1px solid black">
+          <ul>
+            <% order.products.forEach(p => {%>
+            <h5>Order #<%= order._id%></h5>
+            <li>
+              <p><%= p.product.title %> (<%= p.quantity%>)</p>
+            </li>
+            <% })%>
+          </ul>
+        </div>
+      <% })%>
+    <% }else {%>
+      <h1>Nothing here!</h1>
+    <% }%>
+    </div>
+    <% include ../includes/end.ejs %>
